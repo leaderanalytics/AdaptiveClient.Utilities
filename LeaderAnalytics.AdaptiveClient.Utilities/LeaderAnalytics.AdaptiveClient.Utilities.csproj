@@ -16,6 +16,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>AdaptiveClient.Utilities</PackageId>
     <Product>AdaptiveClient.Utilities</Product>
+    <PackageLicenseUrl>https://github.com/leaderanalytics/AdaptiveClient.Utilities/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>
