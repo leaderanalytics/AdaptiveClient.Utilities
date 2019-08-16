@@ -12,9 +12,6 @@ namespace LeaderAnalytics.AdaptiveClient.Utilities
     {
         public virtual bool IsInterfaceAlive(IEndPointConfiguration endPoint)
         {
-            if (!NetworkInterface.GetIsNetworkAvailable())
-                return false;
-
             bool result = true;
 
             using (SqlConnection con = new SqlConnection(endPoint.ConnectionString))

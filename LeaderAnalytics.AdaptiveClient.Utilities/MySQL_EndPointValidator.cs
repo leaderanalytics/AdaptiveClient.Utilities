@@ -12,9 +12,6 @@ namespace LeaderAnalytics.AdaptiveClient.Utilities
     {
         public virtual bool IsInterfaceAlive(IEndPointConfiguration endPoint)
         {
-            if (!NetworkInterface.GetIsNetworkAvailable())
-                return false;
-
             bool result = true;
 
             using (MySqlConnection con = new MySqlConnection(endPoint.ConnectionString))
