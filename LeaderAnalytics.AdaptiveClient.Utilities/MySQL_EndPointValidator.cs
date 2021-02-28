@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
-
+using MySqlConnector;
 
 namespace LeaderAnalytics.AdaptiveClient.Utilities
 {
