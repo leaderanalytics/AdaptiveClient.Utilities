@@ -27,5 +27,23 @@ namespace LeaderAnalytics.AdaptiveClient.Utilities
             }
             return result;
         }
+
+        public virtual async Task<bool> IsInterfaceAliveAsync(IEndPointConfiguration endPoint)
+        {
+            bool result = true;
+
+            using (SqlConnection con = new SqlConnection(endPoint.ConnectionString))
+            {
+                try
+                {
+                    await con.OpenAsync();
+                }
+                catch (Exception)
+                {
+                    result = false;
+                }
+            }
+            return result;
+        }
     }
 }
