@@ -1,48 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Threading.Tasks;
-using MySqlConnector;
+﻿namespace LeaderAnalytics.AdaptiveClient.Utilities;
 
-namespace LeaderAnalytics.AdaptiveClient.Utilities
+public class MySQL_EndPointValidator : IEndPointValidator
 {
-    public class MySQL_EndPointValidator : IEndPointValidator
+    public virtual bool IsInterfaceAlive(IEndPointConfiguration endPoint)
     {
-        public virtual bool IsInterfaceAlive(IEndPointConfiguration endPoint)
+        bool result = true;
+
+        using (MySqlConnection con = new MySqlConnection(endPoint.ConnectionString))
         {
-            bool result = true;
-
-            using (MySqlConnection con = new MySqlConnection(endPoint.ConnectionString))
+            try
             {
-                try
-                {
-                    con.Open(); // must specify an existing database name in connection string or it throws.
-                }
-                catch (Exception)
-                {
-                    result = false;
-                }
+                con.Open(); // must specify an existing database name in connection string or it throws.
             }
-            return result;
+            catch (Exception)
+            {
+                result = false;
+            }
         }
+        return result;
+    }
 
-        public virtual async Task<bool> IsInterfaceAliveAsync(IEndPointConfiguration endPoint)
+    public virtual async Task<bool> IsInterfaceAliveAsync(IEndPointConfiguration endPoint)
+    {
+        bool result = true;
+
+        using (MySqlConnection con = new MySqlConnection(endPoint.ConnectionString))
         {
-            bool result = true;
-
-            using (MySqlConnection con = new MySqlConnection(endPoint.ConnectionString))
+            try
             {
-                try
-                {
-                    await con.OpenAsync(); // must specify an existing database name in connection string or it throws.
-                }
-                catch (Exception)
-                {
-                    result = false;
-                }
+                await con.OpenAsync(); // must specify an existing database name in connection string or it throws.
             }
-            return result;
+            catch (Exception)
+            {
+                result = false;
+            }
         }
+        return result;
     }
 }

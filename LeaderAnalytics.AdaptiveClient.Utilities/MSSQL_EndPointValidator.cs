@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Threading.Tasks;
-
+﻿
 
 namespace LeaderAnalytics.AdaptiveClient.Utilities
 {
