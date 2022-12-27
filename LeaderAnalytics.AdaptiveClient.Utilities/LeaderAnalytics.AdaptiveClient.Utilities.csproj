@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Version>2.0.0</Version>
+    <TargetFramework>net7.0</TargetFramework>
+    <Version>4.0.0</Version>
     <Authors>Leader Analytics</Authors>
     <Company>Leader Analytics</Company>
     <Description>Utilities for AdaptiveClient</Description>
-    <Copyright>2021 Leader Analytics</Copyright>
+    <Copyright>2023 Leader Analytics</Copyright>
     <PackageProjectUrl>https://github.com/leaderanalytics/AdaptiveClient.Utilities</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/leaderanalytics/AdaptiveClient.Utilities</RepositoryUrl>
@@ -22,15 +22,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AdaptiveClient" Version="3.0.2" />
-    <PackageReference Include="MySqlConnector" Version="2.0.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="AdaptiveClient" Version="4.0.7" />
+    <PackageReference Include="MySqlConnector" Version="2.2.4" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Net.NetworkInformation" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\icon.png" Pack="true" PackagePath="\"/>
-    <None Include="..\license" Pack="true" PackagePath="\"/>
+    <None Include="..\icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\license" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>
