@@ -13,7 +13,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  project: '**/LeaderAnalytics.AdaptiveClient.Utilities.csproj'
+  project: 'LeaderAnalytics.AdaptiveClient.Utilities/LeaderAnalytics.AdaptiveClient.Utilities.csproj'
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
