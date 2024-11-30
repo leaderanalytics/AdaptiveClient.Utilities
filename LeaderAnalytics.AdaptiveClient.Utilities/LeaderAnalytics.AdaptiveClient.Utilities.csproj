@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Version>2.0.0</Version>
+    <TargetFrameworks>net9;net8</TargetFrameworks>
     <Authors>Leader Analytics</Authors>
     <Company>Leader Analytics</Company>
     <Description>Utilities for AdaptiveClient</Description>
@@ -16,21 +15,21 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PackageId>AdaptiveClient.Utilities</PackageId>
+    <PackageId>LeaderAnalytics.AdaptiveClient.Utilities</PackageId>
     <Product>AdaptiveClient.Utilities</Product>
     <PackageLicenseFile>license</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AdaptiveClient" Version="3.0.2" />
-    <PackageReference Include="MySqlConnector" Version="2.0.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="LeaderAnalytics.AdaptiveClient" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+    <PackageReference Include="MySqlConnector" Version="2.4.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Net.NetworkInformation" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\icon.png" Pack="true" PackagePath="\"/>
-    <None Include="..\license" Pack="true" PackagePath="\"/>
+    <None Include="..\icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\license" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>
