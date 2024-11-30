@@ -1,37 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using LeaderAnalytics.AdaptiveClient;
+﻿namespace LeaderAnalytics.AdaptiveClient.Utilities;
 
-namespace LeaderAnalytics.AdaptiveClient.Utilities
+public abstract class ServiceManifestFactory
 {
-    public abstract class ServiceManifestFactory
+    public Func<IEndPointConfiguration> EndPointFactory { get; set; }
+    public ResolutionHelper ResolutionHelper { get; set; }
+    private bool disposed;
+
+    protected virtual TService Create<TService>()
     {
-        public Func<IEndPointConfiguration> EndPointFactory { get; set; }
-        public ResolutionHelper ResolutionHelper { get; set; }
-        private bool disposed;
+        IEndPointConfiguration ep = EndPointFactory();
+        return ResolutionHelper.ResolveClient<TService>(ep.EndPointType, ep.ProviderName);
+    }
 
-        protected virtual TService Create<TService>()
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!disposed)
         {
-            IEndPointConfiguration ep = EndPointFactory();
-            return ResolutionHelper.ResolveClient<TService>(ep.EndPointType, ep.ProviderName);
-        }
-
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposed)
+            if (disposing)
             {
-                if (disposing)
-                {
-                    disposed = true;
-                }
+                disposed = true;
             }
         }
     }

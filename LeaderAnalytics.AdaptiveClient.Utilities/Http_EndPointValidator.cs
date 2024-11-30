@@ -1,38 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.NetworkInformation;
-using System.Threading.Tasks;
+﻿namespace LeaderAnalytics.AdaptiveClient.Utilities;
 
-
-namespace LeaderAnalytics.AdaptiveClient.Utilities
+public class Http_EndPointValidator : IEndPointValidator
 {
-    public class Http_EndPointValidator : IEndPointValidator
+    public virtual bool IsInterfaceAlive(IEndPointConfiguration endPoint) => IsInterfaceAlive(endPoint.ConnectionString);
+
+    public virtual bool IsInterfaceAlive(string url)
     {
-        public virtual bool IsInterfaceAlive(IEndPointConfiguration endPoint) => IsInterfaceAlive(endPoint.ConnectionString);
+        bool success = false;
+        HttpClient httpClient = new HttpClient();
+        HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Get, new Uri(url));
+        HttpResponseMessage response = httpClient.SendAsync(msg).Result;
+        success = response.StatusCode == HttpStatusCode.OK;
+        return success;
+    }
 
-        public virtual bool IsInterfaceAlive(string url)
-        {
-            bool success = false;
-            HttpClient httpClient = new HttpClient();
-            HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Get, new Uri(url));
-            HttpResponseMessage response = httpClient.SendAsync(msg).Result;
-            success = response.StatusCode == HttpStatusCode.OK;
-            return success;
-        }
+    public virtual async Task<bool> IsInterfaceAliveAsync(IEndPointConfiguration endPoint) => await IsInterfaceAliveAsync(endPoint.ConnectionString);
 
-        public virtual async Task<bool> IsInterfaceAliveAsync(IEndPointConfiguration endPoint) => await IsInterfaceAliveAsync(endPoint.ConnectionString);
-
-        public virtual async Task<bool> IsInterfaceAliveAsync(string url)
-        {
-            bool success = false;
-            HttpClient httpClient = new HttpClient();
-            HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Get, new Uri(url));
-            HttpResponseMessage response = await httpClient.SendAsync(msg);
-            success = response.StatusCode == HttpStatusCode.OK;
-            return success;
-        }
+    public virtual async Task<bool> IsInterfaceAliveAsync(string url)
+    {
+        bool success = false;
+        HttpClient httpClient = new HttpClient();
+        HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Get, new Uri(url));
+        HttpResponseMessage response = await httpClient.SendAsync(msg);
+        success = response.StatusCode == HttpStatusCode.OK;
+        return success;
     }
 }
