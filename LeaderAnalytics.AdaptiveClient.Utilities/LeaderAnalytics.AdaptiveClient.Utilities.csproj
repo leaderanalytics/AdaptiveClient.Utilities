@@ -19,19 +19,8 @@
     <Product>AdaptiveClient.Utilities</Product>
     <PackageLicenseFile>license</PackageLicenseFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="LeaderAnalytics.AdaptiveClient" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0" />
-    <PackageReference Include="MySqlConnector" Version="2.5.0" />
-  </ItemGroup>
-
   <ItemGroup>
     <None Include="..\icon.png" Pack="true" PackagePath="\" />
     <None Include="..\license" Pack="true" PackagePath="\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Nerdbank.GitVersioning" Version="3.9.50" />
   </ItemGroup>
 </Project>
